@@ -2,14 +2,15 @@
 
 import java.util.Date;
 
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.ce.wcaquino.entidades.Filme;
-import br.ce.wcaquino.entidades.Locacao;
-import br.ce.wcaquino.entidades.Usuario;
-import br.ce.wcaquino.servicos.LocacaoService;
-import br.ce.wcaquino.utils.DataUtils;
+import br.jackson.entidades.Filme;
+import br.jackson.entidades.Locacao;
+import br.jackson.entidades.Usuario;
+import br.jackson.servicos.LocacaoService;
+import br.jackson.utils.DataUtils;
 
 public class LocacaoServiceTest {
 
