@@ -21,7 +21,7 @@ public class LocacaoServiceTest {
 	public ErrorCollector error = new ErrorCollector();
 	
 	@Test
-	public void testeLocacao(){
+	public void testeLocacao() throws Exception{
 		//cenario
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuario 1");
