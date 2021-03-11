@@ -13,6 +13,7 @@ import org.junit.rules.ExpectedException;
 import br.jackson.entidades.Filme;
 import br.jackson.entidades.Locacao;
 import br.jackson.entidades.Usuario;
+import br.jackson.exceptions.FilmeSemEstoqueException;
 import br.jackson.servicos.LocacaoService;
 import br.jackson.utils.DataUtils;
 
@@ -56,7 +57,7 @@ public class LocacaoServiceTest {
 	}
 	
 	
-	@Test(expected=Exception.class)
+	@Test(expected=FilmeSemEstoqueException.class)
 	public void testLocacao_filmeSemEstoque() throws Exception{
 		
 		//cenario

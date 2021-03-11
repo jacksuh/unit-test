@@ -2,17 +2,20 @@ package br.jackson.servicos;
 
 import static br.jackson.utils.DataUtils.adicionarDias;
 
+
 import java.util.Date;
 
 import br.jackson.entidades.Filme;
 import br.jackson.entidades.Locacao;
 import br.jackson.entidades.Usuario;
+import br.jackson.exceptions.FilmeSemEstoqueException;
+
 
 public class LocacaoService {
 	
 	public Locacao alugarFilme(Usuario usuario, Filme filme) throws Exception {
 		if(filme.getEstoque() == 0)
-			throw new Exception("Filme sem estoque");
+			throw new FilmeSemEstoqueException();
 			
 		Locacao locacao = new Locacao();
 		locacao.setFilme(filme);
