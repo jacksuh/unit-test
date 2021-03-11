@@ -5,8 +5,10 @@ import java.util.Date;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -24,6 +26,8 @@ public class LocacaoServiceTest {
 
 	private LocacaoService service;
 	
+
+	
 	@Rule
 	public ErrorCollector error = new ErrorCollector();
 	
@@ -32,16 +36,10 @@ public class LocacaoServiceTest {
 	
 	@Before
 	public void setup(){
-		
 		service = new LocacaoService();
+
 	}
-	
-	@After
-	public void tearDown(){
 		
-	}
-	
-	
 	
 	@Test
 	public void testeLocacao() throws Exception{
