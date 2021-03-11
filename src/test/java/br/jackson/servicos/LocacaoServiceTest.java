@@ -65,4 +65,22 @@ public class LocacaoServiceTest {
 				
 				
 	}
+	
+	@Test
+	public void testLocacao_filmeSemEstoque_2(){
+		
+		//cenario
+				LocacaoService service = new LocacaoService();
+				Usuario usuario = new Usuario("Usuario 1");
+				Filme filme = new Filme("Filme 1", 0, 5.0);
+				
+				//acao
+				try {
+					service.alugarFilme(usuario, filme);
+				} catch (Exception e) {
+					Assert.assertThat(e.getMessage(), CoreMatchers.is("Filme sem estoque"));
+				}
+				
+				
+	}
 }
