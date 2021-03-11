@@ -14,6 +14,7 @@ import br.jackson.entidades.Filme;
 import br.jackson.entidades.Locacao;
 import br.jackson.entidades.Usuario;
 import br.jackson.exceptions.FilmeSemEstoqueException;
+import br.jackson.exceptions.LocadoraException;
 import br.jackson.servicos.LocacaoService;
 import br.jackson.utils.DataUtils;
 
@@ -72,6 +73,33 @@ public class LocacaoServiceTest {
 	}
 	
 	@Test
+	public void testLocacaoUsuarioVazio() throws FilmeSemEstoqueException, LocadoraException{
+		//cenario
+		LocacaoService service = new LocacaoService();
+		Filme filme = new Filme("Filme 1", 1, 5.0);
+		
+		exception.expect(LocadoraException.class);
+		exception.expectMessage("Usuario vazio");
+	
+		service.alugarFilme(null, filme);
+		
+	}
+	
+	@Test
+	public void testLocacao_FilmeVazio() throws FilmeSemEstoqueException, LocadoraException{
+		//cenario
+		LocacaoService service = new LocacaoService();
+		Usuario usuario = new Usuario("Usuario 1");
+		
+			exception.expect(LocadoraException.class);
+			exception.expectMessage("Filme vazio");
+			
+			service.alugarFilme(usuario, null);
+		
+	}
+	
+	/*
+	@Test
 	public void testLocacao_filmeSemEstoque_2(){
 		
 		//cenario
@@ -104,4 +132,6 @@ public class LocacaoServiceTest {
 				//acao
 				service.alugarFilme(usuario, filme);
 	}
+	
+*/
 }
