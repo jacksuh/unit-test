@@ -15,7 +15,7 @@ public class CalculadoraTest {
 	
 	@Before
 	public void setup(){
-		cal = new  Calculadora();
+		calc = new  Calculadora();
 	}
 	
 	@Test
