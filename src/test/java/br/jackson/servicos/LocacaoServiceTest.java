@@ -173,4 +173,29 @@ public class LocacaoServiceTest {
 		
 		Assert.assertThat(resultado.getValor(), CoreMatchers.is(13.0));
 	}
+	
+	@Test
+	public void devepagar25PctNoFilme4() throws FilmeSemEstoqueException, LocadoraException{
+		Usuario usuario = new Usuario("Usuario 1");
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 4.0), new Filme("Filme 1", 2, 4.0),
+				new Filme("Filme 1", 2, 4.0), new Filme("Filme 1", 2, 4.0),
+				new Filme("Filme 1", 2, 4.0));
+		
+		Locacao resultado = service.alugarFilme(usuario, filmes);
+		
+		Assert.assertThat(resultado.getValor(), CoreMatchers.is(14.0));
+	}
+	
+	
+	@Test
+	public void devepagar0PctNoFilme4() throws FilmeSemEstoqueException, LocadoraException{
+		Usuario usuario = new Usuario("Usuario 1");
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 4.0), new Filme("Filme 2", 2, 4.0),
+				new Filme("Filme 3", 2, 4.0), new Filme("Filme 4", 2, 4.0),
+				new Filme("Filme 5", 2, 4.0),new Filme("Filme 6", 2, 4.0) );
+		
+		Locacao resultado = service.alugarFilme(usuario, filmes);
+		
+		Assert.assertThat(resultado.getValor(), CoreMatchers.is(14.0));
+	}
 }
