@@ -43,7 +43,7 @@ public class CalculoValorLocacaoTest {
 	private static Filme filme5 = new Filme("Filme 5", 2, 4.0);
 	private static Filme filme6 = new Filme("Filme 6", 2, 4.0);
 	
-	@Parameters
+	@Parameters(name="Teste {index} = {0} - {1}")
 	public static Collection<Object[]> getParametros(){
 		return Arrays.asList(new Object[][] {
 				{Arrays.asList(filme1, filme2, filme3), 11.0},
@@ -63,5 +63,8 @@ public class CalculoValorLocacaoTest {
 		Assert.assertThat(resultado.getValor(), CoreMatchers.is(valorLocacao));
 	}
 	
-
+	@Test
+	public void print(){
+		System.out.println(valorLocacao);
+	}
 }
