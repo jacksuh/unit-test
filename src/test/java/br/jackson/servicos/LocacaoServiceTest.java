@@ -2,6 +2,7 @@ package br.jackson.servicos;
 
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -166,8 +167,8 @@ public class LocacaoServiceTest {
 	@Test
 	public void devepagar50PctNoFilme4() throws FilmeSemEstoqueException, LocadoraException{
 		Usuario usuario = new Usuario("Usuario 1");
-		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 4.0), new Filme("Filme 1", 2, 4.0),
-				new Filme("Filme 1", 2, 4.0), new Filme("Filme 1", 2, 4.0));
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 4.0), new Filme("Filme 2", 2, 4.0),
+				new Filme("Filme 3", 2, 4.0), new Filme("Filme 4", 2, 4.0));
 		
 		Locacao resultado = service.alugarFilme(usuario, filmes);
 		
@@ -177,9 +178,9 @@ public class LocacaoServiceTest {
 	@Test
 	public void devepagar25PctNoFilme4() throws FilmeSemEstoqueException, LocadoraException{
 		Usuario usuario = new Usuario("Usuario 1");
-		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 4.0), new Filme("Filme 1", 2, 4.0),
-				new Filme("Filme 1", 2, 4.0), new Filme("Filme 1", 2, 4.0),
-				new Filme("Filme 1", 2, 4.0));
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 4.0), new Filme("Filme 2", 2, 4.0),
+				new Filme("Filme 3", 2, 4.0), new Filme("Filme 4", 2, 4.0),
+				new Filme("Filme 5", 2, 4.0));
 		
 		Locacao resultado = service.alugarFilme(usuario, filmes);
 		
@@ -197,5 +198,19 @@ public class LocacaoServiceTest {
 		Locacao resultado = service.alugarFilme(usuario, filmes);
 		
 		Assert.assertThat(resultado.getValor(), CoreMatchers.is(14.0));
+	}
+	
+	
+	@Test
+	public void deveDevolverNaSegundaAoAlugarNoSabado() throws FilmeSemEstoqueException, LocadoraException{
+		
+		Usuario usuario = new Usuario("Usuario 1");
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 1, 5.0));
+		
+		Locacao retorno = service.alugarFilme(usuario, filmes);
+		
+		boolean ehSegunda = DataUtils.verificarDiaSemana(retorno.getDataRetorno(), Calendar.MONDAY);
+		
+		Assert.assertTrue(ehSegunda);
 	}
 }

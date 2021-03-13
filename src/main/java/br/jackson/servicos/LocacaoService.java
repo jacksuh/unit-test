@@ -2,6 +2,7 @@ package br.jackson.servicos;
 
 import static br.jackson.utils.DataUtils.adicionarDias;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import br.jackson.entidades.Locacao;
 import br.jackson.entidades.Usuario;
 import br.jackson.exceptions.FilmeSemEstoqueException;
 import br.jackson.exceptions.LocadoraException;
+import br.jackson.utils.DataUtils;
 
 public class LocacaoService {
 	
@@ -53,6 +55,9 @@ public class LocacaoService {
 		//Entrega no dia seguinte
 		Date dataEntrega = new Date();
 		dataEntrega = adicionarDias(dataEntrega, 1);
+		if(DataUtils.verificarDiaSemana(dataEntrega, Calendar.SUNDAY)){
+			dataEntrega = adicionarDias(dataEntrega, 1);
+		}
 		locacao.setDataRetorno(dataEntrega);
 		
 		//Salvando a locacao...	
