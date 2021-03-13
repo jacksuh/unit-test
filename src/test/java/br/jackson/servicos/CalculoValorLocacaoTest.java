@@ -25,10 +25,10 @@ public class CalculoValorLocacaoTest {
 	private LocacaoService service;
 	
 	@Parameter
-	private List<Filme> filmes;
+	public List<Filme> filmes;
 	
 	@Parameter(value=1)
-	private Double valorLocacao;
+	public Double valorLocacao;
 	
 	@Before
 	public void setup(){
