@@ -7,6 +7,8 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import br.jackson.entidades.Filme;
 import br.jackson.entidades.Locacao;
@@ -14,6 +16,7 @@ import br.jackson.entidades.Usuario;
 import br.jackson.exceptions.FilmeSemEstoqueException;
 import br.jackson.exceptions.LocadoraException;
 
+@RunWith(Parameterized.class)
 public class CalculoValorLocacaoTest {
 	
 	private LocacaoService service;
