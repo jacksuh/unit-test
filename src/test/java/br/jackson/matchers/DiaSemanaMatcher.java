@@ -8,6 +8,8 @@ import java.util.Date;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
+import br.jackson.utils.DataUtils;
+
 public class DiaSemanaMatcher extends TypeSafeMatcher<Date> {
 
 	private Integer diaSemana;
@@ -17,14 +19,12 @@ public class DiaSemanaMatcher extends TypeSafeMatcher<Date> {
 	}
 	
 	public void describeTo(Description description) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public boolean matchesSafely(Date item) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean matchesSafely(Date data) {
+		return DataUtils.verificarDiaSemana(data, diaSemana);
 	}
 
 

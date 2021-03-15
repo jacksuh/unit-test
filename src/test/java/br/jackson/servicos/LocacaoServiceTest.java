@@ -24,6 +24,7 @@ import br.jackson.entidades.Locacao;
 import br.jackson.entidades.Usuario;
 import br.jackson.exceptions.FilmeSemEstoqueException;
 import br.jackson.exceptions.LocadoraException;
+import br.jackson.matchers.DiaSemanaMatcher;
 import br.jackson.servicos.LocacaoService;
 import br.jackson.utils.DataUtils;
 
@@ -218,6 +219,7 @@ public class LocacaoServiceTest {
 		boolean ehSegunda = DataUtils.verificarDiaSemana(retorno.getDataRetorno(), Calendar.MONDAY);
 		
 		Assert.assertTrue(ehSegunda);
+		Assert.assertThat(retorno.getDataRetorno(), new DiaSemanaMatcher(Calendar.MONDAY));
 //		Assert.assertThat(retorno.getDataRetorno(), caiEm(Calendar.MONDAY));
 	}
 }
