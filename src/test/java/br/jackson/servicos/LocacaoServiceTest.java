@@ -8,13 +8,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -22,7 +20,6 @@ import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 
 import br.jackson.daos.LocacaoDAO;
-import br.jackson.daos.LocacaoDAOFake;
 import br.jackson.entidades.Filme;
 import br.jackson.entidades.Locacao;
 import br.jackson.entidades.Usuario;
@@ -227,4 +224,6 @@ public class LocacaoServiceTest {
 		Assert.assertThat(retorno.getDataRetorno(), new DiaSemanaMatcher(Calendar.MONDAY));
 //		Assert.assertThat(retorno.getDataRetorno(), caiEm(Calendar.MONDAY));
 	}
+	
+	
 }
