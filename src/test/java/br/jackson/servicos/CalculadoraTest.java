@@ -4,18 +4,23 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.jackson.daos.LocacaoDAO;
+import br.jackson.daos.LocacaoDAOFake;
 import br.jackson.exceptions.NaoPodeDividirPorZeroException;
 
 
 
 public class CalculadoraTest {
 
+	private LocacaoService service;
 	
 	private Calculadora calc;
 	
 	@Before
 	public void setup(){
 		calc = new  Calculadora();
+		LocacaoDAO dao = new LocacaoDAOFake();
+		service.setLocacaoDAO(dao);
 	}
 	
 	@Test

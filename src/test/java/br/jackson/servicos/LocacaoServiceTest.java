@@ -2,6 +2,7 @@ package br.jackson.servicos;
 
 
 import java.util.Arrays;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,8 @@ import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
 
+import br.jackson.daos.LocacaoDAO;
+import br.jackson.daos.LocacaoDAOFake;
 import br.jackson.entidades.Filme;
 import br.jackson.entidades.Locacao;
 import br.jackson.entidades.Usuario;
@@ -43,7 +46,8 @@ public class LocacaoServiceTest {
 	@Before
 	public void setup(){
 		service = new LocacaoService();
-
+		LocacaoDAO dao = new LocacaoDAOFake();
+		service.setLocacaoDAO(dao);
 	}
 		
 	
