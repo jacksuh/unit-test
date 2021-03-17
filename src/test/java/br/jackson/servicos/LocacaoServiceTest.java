@@ -19,6 +19,7 @@ import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 
+import br.jackson.builders.LocacaoBuilder;
 import br.jackson.daos.LocacaoDAO;
 import br.jackson.entidades.Filme;
 import br.jackson.entidades.Locacao;
@@ -228,6 +229,7 @@ public class LocacaoServiceTest {
 	@Test
 	public void deveEnviarEmailParaLocacoesAtrasadas(){
 		
+		List<Locacao> locacoes = Arrays.asList(LocacaoBuilder.umLocacao().comDataRetorno(DataUtils.obterDataComDiferencaDias(-2)).agora());
 	}
 	
 	
