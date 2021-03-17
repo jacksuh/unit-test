@@ -225,7 +225,10 @@ public class LocacaoServiceTest {
 //		Assert.assertThat(retorno.getDataRetorno(), caiEm(Calendar.MONDAY));
 	}
 	
-	
+	@Test
+	public void deveEnviarEmailParaLocacoesAtrasadas(){
+		
+	}
 	
 	
 }
