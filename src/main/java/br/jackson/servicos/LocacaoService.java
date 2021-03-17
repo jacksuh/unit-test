@@ -29,34 +29,30 @@ public class LocacaoService {
 			throw new LocadoraException("Filme vazio");
 		}
 		
-		for(Filme filme: filmes){
+		for(Filme filme: filmes) {
 			if(filme.getEstoque() == 0) {
 				throw new FilmeSemEstoqueException();
-		}
-		}
-		
-		if(spcService.possuiNegativacao(usuario)){
-			throw new LocadoraException("Usuario negativado");
+			}
 		}
 		
-			
+		if(spcService.possuiNegativacao(usuario)) {
+			throw new LocadoraException("Usuário Negativado");
+		}
+		
 		Locacao locacao = new Locacao();
-		locacao.setFilme(filmes);
+		locacao.setFilmes(filmes);
 		locacao.setUsuario(usuario);
 		locacao.setDataLocacao(new Date());
 		Double valorTotal = 0d;
-		for(int  i = 0; i < filmes.size(); i++){
+		for(int i = 0; i < filmes.size(); i++) {
 			Filme filme = filmes.get(i);
 			Double valorFilme = filme.getPrecoLocacao();
-			
-			switch (i){
-			case 2: valorFilme = valorFilme * 0.75; break;
-			case 3: valorFilme = valorFilme * 0.5; break;
-			case 4: valorFilme = valorFilme * 0.25; break;
-			case 5: valorFilme = 0d; break;
+			switch (i) {
+				case 2: valorFilme = valorFilme * 0.75; break;
+				case 3: valorFilme = valorFilme * 0.5; break;
+				case 4: valorFilme = valorFilme * 0.25; break;
+				case 5: valorFilme = 0d; break;
 			}
-			
-			
 			valorTotal += valorFilme;
 		}
 		locacao.setValor(valorTotal);
@@ -64,7 +60,7 @@ public class LocacaoService {
 		//Entrega no dia seguinte
 		Date dataEntrega = new Date();
 		dataEntrega = adicionarDias(dataEntrega, 1);
-		if(DataUtils.verificarDiaSemana(dataEntrega, Calendar.SUNDAY)){
+		if(DataUtils.verificarDiaSemana(dataEntrega, Calendar.SUNDAY)) {
 			dataEntrega = adicionarDias(dataEntrega, 1);
 		}
 		locacao.setDataRetorno(dataEntrega);
@@ -75,25 +71,22 @@ public class LocacaoService {
 		return locacao;
 	}
 	
-	
 	public void notificarAtrasos(){
 		List<Locacao> locacoes = dao.obterLocacoesPendentes();
-		for(Locacao locacao: locacoes){
+		for(Locacao locacao: locacoes) {
 			emailService.notificarAtraso(locacao.getUsuario());
 		}
 	}
 	
-	
-	
-	public void setLocacaoDAO(LocacaoDAO dao){
+	public void setLocacaoDAO(LocacaoDAO dao) {
 		this.dao = dao;
 	}
 	
-	public void setSPCService(SPCService spc){
+	public void setSPCService(SPCService spc) {
 		spcService = spc;
 	}
 	
-	public void setEmailService(EmailService email){
+	public void setEmailService(EmailService email) {
 		emailService = email;
 	}
 }

@@ -2,8 +2,8 @@ package br.jackson.servicos;
 
 import br.jackson.entidades.Usuario;
 
-public class EmailService {
+public interface EmailService {
+	
+	public void notificarAtraso(Usuario usuario);
 
-	public void notificarAtraso(Usuario usuario) {
-	}
 }

@@ -1,5 +1,8 @@
 package br.jackson.daos;
 
+import java.util.List;
+
+
 import br.jackson.entidades.Locacao;
 
 public class LocacaoDAOFake implements LocacaoDAO {
@@ -8,4 +11,7 @@ public class LocacaoDAOFake implements LocacaoDAO {
 
 	}
 
+	public List<Locacao> obterLocacoesPendentes() {
+		return null;
+	}
 }
