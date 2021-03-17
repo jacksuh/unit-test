@@ -74,6 +74,14 @@ public class LocacaoService {
 		return locacao;
 	}
 	
+	
+	public void notificarAtrasos(){
+		List<Locacao> locacoes = dao.obterLocacoesPendentes();
+		
+	}
+	
+	
+	
 	public void setLocacaoDAO(LocacaoDAO dao){
 		this.dao = dao;
 	}
