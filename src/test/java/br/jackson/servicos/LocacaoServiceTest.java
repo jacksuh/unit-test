@@ -156,11 +156,13 @@ public class LocacaoServiceTest {
 	public void deveEnviarEmailParaLocacoesAtrasadas(){
 		//cenario
 		Usuario usuario = umUsuario().agora();
+		Usuario usuario2 = umUsuario().comNome("Usuario em dia").agora();
 		List<Locacao> locacoes = Arrays.asList(
 				umLocacao()
 					.comUsuario(usuario)
-					.comDataRetorno(obterDataComDiferencaDias(-2))
-					.agora());
+					.atrasado()
+					.agora(),
+					umLocacao().comUsuario(usuario2).agora());
 		when(dao.obterLocacoesPendentes()).thenReturn(locacoes);
 		
 		//acao
