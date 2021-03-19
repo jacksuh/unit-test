@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import static br.jackson.builders.FilmeBuilder.umFilme;
 import static br.jackson.builders.UsuarioBuilder.umUsuario;
+import static br.jackson.utils.DataUtils.obterDataComDiferencaDias;
 
 import java.lang.Double;
 import java.util.Date;
@@ -57,10 +58,9 @@ public class LocacaoBuilder {
 		return this;
 	}
 	
-	
-	public LocacaoBuilder atrasado(){
-		elemento.setDataLocacao(DataUtils.obterDataComDiferencaDias(-4));
-		elemento.setDataLocacao(DataUtils.obterDataComDiferencaDias(-2));
+	public LocacaoBuilder atrasada(){
+		elemento.setDataLocacao(obterDataComDiferencaDias(-4));
+		elemento.setDataRetorno(obterDataComDiferencaDias(-2));
 		return this;
 	}
 

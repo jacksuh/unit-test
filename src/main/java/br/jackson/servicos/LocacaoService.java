@@ -2,6 +2,7 @@ package br.jackson.servicos;
 
 import static br.jackson.utils.DataUtils.adicionarDias;
 
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -74,22 +75,9 @@ public class LocacaoService {
 	public void notificarAtrasos(){
 		List<Locacao> locacoes = dao.obterLocacoesPendentes();
 		for(Locacao locacao: locacoes) {
-			emailService.notificarAtraso(locacao.getUsuario());
-			if(locacao.getDataRetorno().before(new Date())){
+			if(locacao.getDataRetorno().before(new Date())) {
 				emailService.notificarAtraso(locacao.getUsuario());
 			}
 		}
-	}
-	
-	public void setLocacaoDAO(LocacaoDAO dao) {
-		this.dao = dao;
-	}
-	
-	public void setSPCService(SPCService spc) {
-		spcService = spc;
-	}
-	
-	public void setEmailService(EmailService email) {
-		emailService = email;
 	}
 }
