@@ -11,7 +11,7 @@ import br.jackson.servicos.LocacaoServiceTest;
 
 //@RunWith(Suite.class)
 @SuiteClasses({
-	CalculadoraTest.class,
+//	CalculadoraTest.class,
 	CalculoValorLocacaoTest.class,
 	LocacaoServiceTest.class
 })
