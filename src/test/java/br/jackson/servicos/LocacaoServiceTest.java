@@ -56,7 +56,6 @@ public class LocacaoServiceTest {
 	@Mock
 	private EmailService email;
 	
-	
 	@Rule
 	public ErrorCollector error = new ErrorCollector();
 	
