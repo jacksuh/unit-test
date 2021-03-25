@@ -85,7 +85,7 @@ public class LocacaoServiceTest {
 	}
 	
 	@Test(expected = FilmeSemEstoqueException.class)
-	public void naoDeveAlugarFilmeSemEstoque() throws Exception{
+	public void naoDeveAlugarFilmeSEstoque() throws Exception{
 		//cenario
 		Usuario usuario = umUsuario().agora();
 		List<Filme> filmes = Arrays.asList(umFilmeSemEstoque().agora());
@@ -95,7 +95,7 @@ public class LocacaoServiceTest {
 	}
 	
 	@Test
-	public void naoDeveAlugarFilmeSemUsuario() throws FilmeSemEstoqueException{
+	public void naoDeveAlugarFilmeSUsuario() throws FilmeSemEstoqueException{
 		//cenario
 		List<Filme> filmes = Arrays.asList(umFilme().agora());
 		
@@ -109,7 +109,7 @@ public class LocacaoServiceTest {
 	}
 
 	@Test
-	public void naoDeveAlugarFilmeSemFilme() throws FilmeSemEstoqueException, LocadoraException{
+	public void naoDeveAlugarFilmeSFilme() throws FilmeSemEstoqueException, LocadoraException{
 		//cenario
 		Usuario usuario = umUsuario().agora();
 		
@@ -136,7 +136,7 @@ public class LocacaoServiceTest {
 	}
 	
 	@Test
-	public void naoDeveAlugarFilmeParaNegativadoSPC() throws Exception {
+	public void naoDeveAlugarFilmePNegativadoSPC() throws Exception {
 		//cenario
 		Usuario usuario = umUsuario().agora();
 		List<Filme> filmes = Arrays.asList(umFilme().agora());
@@ -156,7 +156,7 @@ public class LocacaoServiceTest {
 	}
 	
 	@Test
-	public void deveEnviarEmailParaLocacoesAtrasadas(){
+	public void deveEnviarEmailPLocacoesAtrasadas(){
 		//cenario
 		Usuario usuario = umUsuario().agora();
 		Usuario usuario2 = umUsuario().comNome("Usuario em dia").agora();
@@ -197,7 +197,7 @@ public class LocacaoServiceTest {
 	}
 	
 	@Test
-	public void deveProrrogarUmaLocacao(){
+	public void deveProrrogarULocacao(){
 		//cenario
 		Locacao locacao = umLocacao().agora();
 		
@@ -215,7 +215,7 @@ public class LocacaoServiceTest {
 	}
 	
 	@Test
-	public void deveCalcularValorLocacao() throws Exception{
+	public void deveCalcularVLocacao() throws Exception{
 		//cenario
 		List<Filme> filmes = Arrays.asList(umFilme().agora());
 		
